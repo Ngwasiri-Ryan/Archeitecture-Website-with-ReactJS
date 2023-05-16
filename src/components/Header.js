@@ -10,12 +10,15 @@ function Header() {
                 <li><a href="#">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#works">Works</a></li>
-                <li><a href="#">Critics</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#critics">Critics</a></li>
+                <li><a href="#contact">Contact</a></li>
                </ul>
             </div>
+
+            
          
     </div>
+    
   )
 }
 

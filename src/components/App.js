@@ -4,6 +4,9 @@ import Home from './Home';
 import Services from './Services';
 import Works from './Works';
 import Reviews from './Reviews';
+import Critics from './Critics';
+import Contact from './Contact';
+import Footer from './Footer';
 function App() {
   return (
       <div>
@@ -12,7 +15,10 @@ function App() {
         <Services />
         <Works />
         <Reviews />
-        
+        <Critics />
+        <Contact />
+        <Footer />
+       
       </div>
   );
 }

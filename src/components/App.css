@@ -4,6 +4,9 @@
     list-style: none;
     overflow-x:hidden;
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
    display: flex;
    flex-direction: column;
@@ -36,13 +39,15 @@ header.sticky .logo{
 }
 
 .header ul{
-    display: flex;
     gap: 2rem;
+    display: flex;
 }
 .header ul li{
     position: relative;
-    margin: 4px;
+    margin: 1px;
     overflow: hidden;
+   width: 5rem;
+  
 }
 .haeder.sticky ul li a{
     color: black;
@@ -68,12 +73,53 @@ header.sticky .logo{
 .header ul li:hover::after{
     width: 100%;
 }
+.menu{
+    width: 2rem;
+    height: 2rem;
+    margin-left: 90%;
+    margin-top: 4%;
+    align-items: center;
+    position: fixed;
+    justify-content: center;
+    display: none;
+    pointer: cursor;
+}
+.menu .bar{
+    background-color: #009688;
+    width: 100%;
+    height: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0.3rem;
+}
+
+/*--------------responsive web design-------*/
+/*---FOR LAPTOPS AND BIG TABLETS--------*/
+@media  screen and (max-width:1200px){
+   .header{
+     gap: 20%;
+   }
+   .header ul li{
+    margin:1px;
+   }
+}
+/*--FOR SMALL TABLETS AND MOBILE PHONES-----*/
+@media screen and (max-width: 992px) {
+    .header ul{
+        display: none;
+    }
+    .menu{
+        display: block;
+    }
+}
+
 /*************End of heaer**************/
 
 /*****Home Page****/
 .home{
     width: 100%;
     height: 100vh;
+    overflow: hidden;
     background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),
     url(/src/images/img1.jpg);
     background-attachment: fixed;
@@ -90,6 +136,51 @@ header.sticky .logo{
     color: #fff;
     overflow: hidden;
 }
+.dropdown-menu{
+    background-color: white;
+    width: 20%;
+    height: auto;
+    margin-top: 10%;
+    margin-left: 70%;
+    padding-right: 2%;
+    z-index: 1000;
+}
+.dropdown-menu li{
+    display: flex;
+    gap: 10px;
+   margin: 30px;
+   padding: 3px;
+}
+.dropdown-menu.active{
+    opacity: 1;
+    position: fixed;
+    visibility: visible;
+    transform: translateY(0) ;
+    transition: 500ms ease;
+}
+.dropdown-menu.inactive{
+    opacity: 0;
+    visibility: hidden;
+    transition: 500ms ease;
+    margin-top: -15rem;
+}
+
+.dropdown-menu li a{
+    text-decoration: none;
+    color: black;
+}
+.dropdown-menu li a:hover{
+    color: #009688;
+    transition: 500ms ease-in-out;
+}
+.dropdown-menu li img{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.content.active{
+    margin-top: 100%;
+}
+
 .content h1{
     font-size: 50px;
     font-weight: 900;
@@ -131,110 +222,6 @@ button:hover{
 }
 /***End of home page styling*************/
 
-/**************About us page**************/
-#about{
-    background-image:url(/src/images/blocks.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    position:absolute;
-    width: 100%;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1%;
-    align-items: center;
-    padding: 2%;
-}
-#about h3{
-    font-size: 30px;
-    text-transform: uppercase;
-    color: white;
-}
-#about .container{
-    background: linear-gradient(175deg,rgba(255,255,255,0.1),rgba(255,255,255,0));
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.1);
-    display: flex;
-    flex-direction: row;
-    gap: 2%;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-left: -7%;
-    height: 60%;
-    width: 55%;
-    padding: 2%;
-    border-radius: 2rem;
-    cursor: pointer;
-    padding: 2%;
-}
-#about .container::after{
-   content: '';
-   position: absolute;
-   height: 100%;
-   width:0;
-   background-color: #009688;
-   right: 0;
-   bottom: 0;
-   border-radius: 0rem 2rem 2rem 0rem;
-}
-#about .container:hover::after{
-    width: 8%;
-    transition: .5s ease-in-out;
-}
-#about .holder1{
-    width: 50%;
-    height: 60%;
-    justify-content: center;
-    justify-self: center;
-}
-#about .holder2{
-    height: 30%;
-    justify-content: center;
-    padding: 2%;
-    text-align: center;
-    margin-top: -7%;
-    width: 35%;
-}
-#about .holder2 h2{
-    margin-bottom: 10px;
-    font-size: 35px;
-    color: #009688;
-    text-shadow: 2cm black;
-}
-#about .holder2 p{
-    max-width: 100%;
-    color: #fff;
-    margin-top: .5%;
-}
-#about .holder2 .icons{
-    display: flex;
-    padding: 0 2%;
-    width: 100%;
-    justify-self: center;
-    justify-content: center;
-    height: 1.3rem;
-    gap: 10%;
-    margin-top: 10%;
-}
-#about .holder2 .icons img{
-    cursor: pointer;
-}
-#about .holder2 .icons img:hover{
-    transform: scale(1.4);
-    transition: 0.6s delay 1s ease-in-out;
-}
-#about .holder2 button{
-    padding: .5rem;
-    background-color: transparent;
-    margin-top: 8%;
-    width: 10rem;
-}
-/*********End of about page styling*********/
 #services{
     width: 100%;
     height: 100vh;
@@ -323,142 +310,518 @@ button:hover{
 
 /*********Works Page****************/
 #works{
-    height: 60rem;
+    height: 250vh;
+}
+#works .about-us {
     width: 100%;
-    overflow-y: hidden;
-    padding-bottom: 2rem;
+   height: 30%;
+    display: flex;
+    gap: 2%;
+    padding: 3%;
+}
+#works .about-us .first{
+    height: 30rem;
+    width: 40rem;
+}
+#works .about-us .second{
+    height: 35rem;
+    width: 37rem;
     display: flex;
     flex-direction: column;
-}
-#works .heading{
-    display: flex;
-    width: 100%;
-    padding:.6rem;
-    justify-content: center;
-    align-items: center;
-}
-#works .heading p{
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: 900;
-    justify-content: center;
-    text-transform: uppercase;
-    color: #009688;
-    overflow-y: hidden;
-}
-#works .content {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-}
-#works .content p{
-    max-width: 80%;
-}
-#works .project{
-    min-height: 100vh;
-    display: flex;
-    align-items:center;
-    justify-content: center;
-    flex-wrap: wrap;
-    overflow: hidden;
     gap: 3%;
-    margin-top: -2rem;
-    margin-bottom: 1%;
-    padding: 2%;
+    justify-content: center;
+    align-items: center;
 }
-#works .card{
-    height: 40%;
-    width: 25%;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    box-shadow: 3px 5px 10px gray;
-}
-#works .card::after{
-    content: '';
-    bottom: 0;
-    left: 0;
-    height: 0;
-    width:100%;
-    background-color: #009688;
-    position: relative;
-}
-#works .card:hover::after{
-    height: 3%;
-    transition: 1s;
-}
-#works .card .picture{
-    width: 100%;
-    height: 70%;
-}
-#works .card .content{
-    width: 100%;
-    height:12% ;
-    text-align: left;
-    font-size:(var(10%*15))px;
+#works .about-us .second .heading{
     color: #009688;
     font-size: 20px;
+    text-transform: uppercase;
     font-weight: 500;
 }
-#works .card .links{
-   width: 100%;
-   height: 18%;
-   padding-left: 65%;
-   display: flex;
-   gap: 6%;
+#works .about-us .second .content-1{
+    padding: 2%;
+    max-width: 80%;
 }
-#works .card .links img{
-    height: 30%;
-    width: 5%;
+#works .heading2{
+    color: #009688;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
 }
-#works .card .links img:hover{
-    transform: scale(1.1);
-    transition-delay: 0.03s;
-}
-#works .button-holder{
-    width: 100%;
+#works .craftmanship{
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1%;
+    width: 100%;
+    height: 50%;
     justify-content: center;
-    align-self: center;
-    margin-top: -2%;
+    align-items: center;
+    padding-top: 3%;
+    gap: 5%;
 }
-#works .button-holder button{
-    color: black;
+@media  screen and (max-width:875px){
+    #works .craftmanship{
+        height: 65%;
+    }
 }
-/*----------END OF WORKS PAGE------------*/
-#reviews{
-    height: 60vh;
-    width: 100%;
-}
-#reviews .heading{
-    width: 100%;
-    height: 80%;
+#works .craftmanship .card{
+    height: 20rem;
+    width: 25rem;
+    background-color:white;
+    border-radius: 2rem;
+    box-shadow: 3px 5px 10px gray;
+    padding: 1%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding-left: 5%;
 }
-#reviews .heading p{
-   font-size: 2rem;
-   color: blueviolet;
-   font-weight: 700;
-   text-transform: uppercase;
+#works .craftmanship .card img{
+    width: 100%;
+    height: 16rem;
+    border-radius: 2rem;
 }
-#reviews .heading .number{
-    font-size: 8rem;
+#works .craftmanship .card .text{
+    font-size: 1.4rem;
+    padding-top: 1rem;
+    text-align: center;
+    width: 100%;
+    height: 3rem;
     color: #009688;
-    
     font-weight: 700;
-    display: flex;
-    flex-direction: row;
 }
-#reviews .heading .number .plus{
-    font-size: 4rem;
+
+
+
+
+
+/*----------END OF WORKS PAGE------------*/
+
+/*--------------end of reviews styling----------*/
+.review{
+   height: 35rem;
+  overflow: hidden;
+
+}
+.review .heading p{
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
     color: #009688;
-    font-weight: 600 ;
 }
+
+.review-holder{
+        min-height:90vh;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        gap: 5%;
+        margin-left: -.5rem;
+        margin-top: -5rem;
+}
+.review-holder .card{
+     height: 15rem;
+     width: 13rem;
+     margin-top: 2%;
+     background-color: #fff;
+     box-shadow: 3px 5px 10px gray ;
+     justify-content: center;
+     justify-self: center;
+     align-items: center;
+     display: flex;
+     flex-direction: column;
+     padding: 2%;
+     gap: 2%;
+}
+.review-holder .card .num-holder{
+    border: 7px solid #009688;
+    padding: 20%;
+    border-radius: 50%;
+    font-size: 3rem;
+     color: #009688;
+     font-weight: 500;
+     display: flex;
+     gap: 1%;
+}
+.review-holder .card .num-holder .plus{
+    font-size: 2rem;
+    font-weight: 900;
+    color: #009688;
+}
+.review-holder .card p{
+    color: #009688;
+    font-size: larger;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/*--FOR SMALL TABLETS -----*/
+@media screen and (max-width: 1225px){
+        .review{
+            height: 130vh;
+        }
+        .review .heading{
+            height: 10rem;
+            padding-top: 2rem;
+        }
+       
+}
+
 /*------------Reviews styling---------------------*/
 
+/*------------Critics styling---------------------*/
+.critic-holder{
+    display: flex;
+    flex-direction: column;
+    gap: 1%;
+
+}
+.critic-holder h3{
+    display: flex;
+   text-align: center;
+  justify-content: center;
+  padding: 1%;
+  font-size: 2rem;
+  color: #009688;
+  text-transform: uppercase;
+  
+}
+.critic-holder p{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    justify-self:center ;
+    padding: 0 2%;
+    max-width: 80%;
+    margin-left: 10%;
+}
+.critics{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: 90vh;
+    flex-wrap: wrap;
+    gap: 4rem;
+    padding: 2%;
+    margin-top: -6rem;
+
+}
+.critics .card{
+    height: 20rem;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    width: 20rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow:3px 5px 10px gray ;
+    padding: 1%;
+    gap: 2%;
+    margin-top: 7%;
+}
+.critics .card .pic{
+    height: 60%;
+    width: 100%;
+    cursor: pointer;
+}
+.critics .card p{
+    padding-top: 1%;
+    max-width: 100%;
+    text-align: left;
+    left: 0;
+}
+.critics .card .links{
+    width: 100%;
+    display: flex;
+    height: 10%;
+    gap: 15%;
+    justify-content: center;
+    align-items: center;
+}
+.critics .card .links img{
+    height: 1.3rem;
+    width: 1.3rem;
+    cursor: pointer;
+}
+.critics .card .links img:hover{
+    transform: rotate(30deg);
+    transition: .1s delay 1s;
+}
+.critic-holder button{
+    color: black;
+    
+}
+
+@media screen and (max-width: 1225px){
+    #critics .critic-holder p{
+        height: 10rem;
+    }
+}
+@media screen and (max-width: 750px){
+    #critics .critic-holder h3{
+        padding-bottom: 2rem;
+    }
+    #critics .critic-holder p{
+        padding-bottom: 2rem;
+    }
+}
+@media screen and (max-width: 566px){
+    .critics{
+        padding-top: 4rem;
+    }
+ }
+ @media screen and (max-width: 436px){
+    #critics .critic-holder p{
+        padding-bottom: 12rem;
+    }
+ }
+
+/***********end of contact styling*******************/
+
+/****************contact page*********************/
+#contact{
+    display: flex;
+    flex-direction: column;
+    gap:2%;
+}
+#contact .content{
+    padding-top: 20px;
+    font-size: 20px;
+}
+.contact-container{
+   height: 60vh;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: row;
+   position: relative;
+   gap: 2%;
+   padding: 2rem
+}
+.contact-heading{ 
+    padding-top: 5%;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: #009688;
+    font-weight: 800;
+}
+.contact-container{
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+    gap: 15%;
+    height: 70vh;
+}
+.contact-container .info{
+    padding: 1rem;
+    height: 100%;
+    width: 24rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   justify-items: center;
+   gap: 4%;
+}
+.contact-container .info-holder{
+    display: flex;
+    gap: 5%;
+    height:20%;
+    width: 100%;
+    padding: 1rem;
+    padding-left: 2rem;
+}
+.contact-container .info-holder img{
+    height: 3rem;
+    width: 2.7rem;
+}
+.contact-container .info-holder .inform{
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    height: 100%;
+}
+.contact-container .info-holder .inform .heading{
+    color: #009688;
+    font-size: 1.3rem;
+    overflow: hidden;
+    height: 2rem;
+}
+.contact-container .info-holder .inform .info-content{
+   height: 100%;
+}
+.contact-container .form{
+    height: 20rem;
+    width: 40%;
+    gap: 5%;
+    background-color:white;
+    box-shadow:3px 5px 10px gray  ;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contact-container .form .heading{
+    color: #009688;
+    font-size: 1.4rem;
+}
+.contact-container .form .input{
+    width: 100%;
+    margin-bottom: 10px;
+   height: 1.3rem;
+   padding: 5px;
+}
+.contact-container .form .input{
+   border-bottom: 1px solid #009688;
+   width: 80%;
+}
+.contact-container .form .input input[type="text"],input[type="textarea"]{
+  border: none;
+  outline: none;
+  width: 80%;
+}
+.contact-container .form input[type="submit"]{
+    padding: 7px 20px;
+    background-color: #009688;
+    color: white;
+    border:none;
+    border-radius: 1rem;
+}
+#contact .icons{
+    width: 100%;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    margin-top: -3rem;
+    display: flex;
+    gap: 10%;
+    justify-content: center;
+    align-items: center;
+}
+#contact .icons img{
+    height: 1.3rem;
+    width: 1.3rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1225px){
+    #contact .contact-container{
+        gap: 2%;
+    }
+}
+    /*--FOR SMALL TABLETS AND MOBILE PHONES-----*/
+@media screen and (max-width: 977px) {
+    #contact{
+        padding: 3rem;
+    }
+    #contact .contact-container{
+        gap: 2%;
+    }
+    .contact-container .form{
+        padding: .5rem;
+    }
+}
+@media screen and (max-width: 910px) {
+   
+    .contact-container {
+        align-self: center;
+        justify-content: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      height: 120vh;
+    }
+    .contact-container .form{
+        margin-bottom: 5rem;
+        height: 30rem;
+        width: 80%;
+    }
+}
+
+/****************end of contact page*********************/
+
+/****************footer********************/
+.footer{
+    background-color: #121212;
+    height: 70vh;
+    width: 100%;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+}
+.footer .menu-holder{
+    width:80% ;
+    height: 60%;    
+    display: flex;
+    gap: 15%;
+    justify-content: center;
+    align-items: center;
+}
+.footer .menu-holder ul{
+    text-align: center;
+    
+}
+.footer .menu-holder ul .heading{
+    text-transform: uppercase;
+    font-size: 1.3rem;
+}
+.footer .menu-holder ul li{
+    margin: 10px;
+    font-size: 1rem;
+}
+.footer .menu-holder ul li a{
+  text-decoration: none;
+  color: white;
+}
+.footer .icons{
+    width: 100%;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 10%;
+}
+.footer .icons img{
+    height: 1.5rem;
+}
+.footer .search-box{
+    width: 20rem;
+    height: 2.2rem;
+    margin-top: 1rem;
+    background-color: white;
+    display: flex;
+    gap: 8%;
+    margin-top: -1rem;
+}
+footer .search-box img{ 
+    width: 2rem;
+}
+footer .search-box input{
+    border: 1px solid transparent;
+    outline: non;
+}
+footer .credits{
+    overflow-y: hidden;
+   justify-self: end;
+   display: flex;
+   height: 19rem;
+}
+
+@media  screen and (max-width:517px){
+    .footer{
+        height: 250vh;
+    }
+   .menu-holder{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+   }
+}
+/****************end of footer********************/
